@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package dump;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import model.Klinik;
+import model.Pasien;
 
 /**
  *
@@ -15,6 +17,12 @@ import java.util.Date;
  */
 public class AntrianPasien {
 
+    public static ArrayList<AntrianPasien> daftarAntrian
+            = new ArrayList<AntrianPasien>();
+
+    private int tanggalAntrian;
+    private int bulanAntrian;
+    private int tahunAntrian;
     private Klinik klinik;
     private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
@@ -26,7 +34,8 @@ public class AntrianPasien {
     }
 
     /**
-     * method getKlinik digunakan untuk mengambil nilai dari variabel klinik dengan pengembalian tipe Klinik
+     * method getKlinik digunakan untuk mengambil nilai dari variabel klinik
+     * dengan pengembalian tipe Klinik
      *
      * @return
      */
@@ -35,7 +44,8 @@ public class AntrianPasien {
     }
 
     /**
-     * method setKlinik digunakan untuk mengatur/set nilai dari variabel klinik yang bertipe String
+     * method setKlinik digunakan untuk mengatur/set nilai dari variabel klinik
+     * yang bertipe String
      *
      * @param klinik
      */
@@ -54,7 +64,8 @@ public class AntrianPasien {
     }
 
     /**
-     * method setDaftarPasien digunakan untuk mengatur/set nilai dari variabel daftarPasien 
+     * method setDaftarPasien digunakan untuk mengatur/set nilai dari variabel
+     * daftarPasien
      *
      * @param daftarPasien
      */
@@ -67,7 +78,7 @@ public class AntrianPasien {
      * Method untuk menampilkan tanggal dan waktu antrian
      */
     public void TanggalAntrian() {
-         // membuat objek baru bernama date dengan tipe data Date
+        // membuat objek baru bernama date dengan tipe data Date
         Date date = new Date();
         // membuat objek bernama format bertipe simpleDateFormat sebagai format tampilan tanggal
         SimpleDateFormat format = new SimpleDateFormat("E dd/MM/yyy 'at' hh:mm:ss");
@@ -76,7 +87,8 @@ public class AntrianPasien {
     }
 
     /**
-     * Method Mendaftar unutk mendaftar pasien baru di nomor antrian dengan parameter pasien bertipe Pasieb
+     * Method Mendaftar unutk mendaftar pasien baru di nomor antrian dengan
+     * parameter pasien bertipe Pasieb
      *
      * @param pasien
      * @throws Exception

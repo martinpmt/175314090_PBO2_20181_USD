@@ -9,7 +9,7 @@ import model.Dokter;
 import model.Pasien;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import model.AntrianPasien;
+import dump.AntrianPasien;
 import model.Klinik;
 
 /**
@@ -44,7 +44,7 @@ public class TestPasienTry {
             ex.printStackTrace();
         }
         System.out.println("===========================================");
-        System.out.println(antri.getKlinik().getNama());
+        System.out.println(antri.getKlinik().getNamaKlinik());
         System.out.println("ID Klinik : " + antri.getKlinik().getIdKlinik());
         System.out.println("===========================================");
         for (int i = 0; i < antri.getDaftarPasien().size(); i++) {

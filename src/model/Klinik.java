@@ -5,28 +5,50 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jarkom
  */
 public class Klinik {
 
-    private String idKlinik, nama;
+    public static ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
+
+        public static void tambahKlinik(Klinik klinik){
+        daftarKlinik.add(klinik);
+    }
+    
+    public static Klinik cariKlinik(String namaKlinik){
+        for (int i = 0; i < daftarKlinik.size(); i++) {
+            if(daftarKlinik.get(i).
+                    getNamaKlinik().equalsIgnoreCase(namaKlinik))
+            {
+                return daftarKlinik.get(i);
+            }
+        }
+        return null;
+    }
+    
+    private String idKlinik, namaKlinik;
 
     /**
      * konstruktor untuk mendeklarasikan objek pasien dengan parameter lokal
+     *
      * @param idKlinik
      * @param nama
      */
-    public Klinik(String idKlinik, String nama) {
+    public Klinik(String idKlinik, String namaKlinik) {
         // pernyataan bahwa variabel idKlinik sama dengan variabel lokal idKlinik
         this.idKlinik = idKlinik;
-        // pernyataan bahwa variabel nama sama dengan variabel lokal nama
-        this.nama = nama;
+        // pernyataan bahwa variabel namaKlinik sama dengan variabel lokal namaKlinik
+        this.namaKlinik = namaKlinik;
     }
 
     /**
-     * method getIdKlinik digunakan untuk mengambil nilai dari variabel idKlinik dengan pengembalian tipe String
+     * method getIdKlinik digunakan untuk mengambil nilai dari variabel idKlinik
+     * dengan pengembalian tipe String
+     *
      * @return
      */
     public String getIdKlinik() {
@@ -34,7 +56,9 @@ public class Klinik {
     }
 
     /**
-     * method setIdKlinik digunakan untuk mengatur/set nilai dari variabel idKlinik yang bertipe String
+     * method setIdKlinik digunakan untuk mengatur/set nilai dari variabel
+     * idKlinik yang bertipe String
+     *
      * @param idKlinik
      */
     public void setIdKlinik(String idKlinik) {
@@ -42,24 +66,29 @@ public class Klinik {
     }
 
     /**
-     * method getNama digunakan untuk mengambil nilai dari variabel nama dengan pengembalian tipe String
+     * method getNama digunakan untuk mengambil nilai dari variabel namaKlinik
+     * dengan pengembalian tipe String
+     *
      * @return
      */
-    public String getNama() {
-        return nama;
+    public String getNamaKlinik() {
+        return namaKlinik;
     }
 
     /**
-     * method setNama digunakan untuk mengatur/set nilai dari variabel nama yang bertipe String
+     * method setNama digunakan untuk mengatur/set nilai dari variabel
+     * namaKlinik yang bertipe String
+     *
      * @param nama
      */
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setNamaKlinik(String namaKlinik) {
+        this.namaKlinik = namaKlinik;
     }
 
     /**
-     * Konstruktor untuk mendeklarasikan objek pasien 
+     * Konstruktor untuk mendeklarasikan objek pasien
      */
     public Klinik() {
     }
+
 }

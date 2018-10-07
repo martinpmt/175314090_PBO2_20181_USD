@@ -15,19 +15,13 @@ import java.util.Date;
  */
 public class Pasien {
 
-    private String noRekamMedis;
+    private String noRM;
     private String nama;
     private String alamat;
     private String tempatLahir;
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
-    private String nik;
-
-
-    public static ArrayList<Pasien> getDaftarPasienKlinik() {
-        return daftarPasienKlinik;
-    }
 
     public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasienKlinik) {
         Pasien.daftarPasienKlinik = daftarPasienKlinik;
@@ -40,7 +34,7 @@ public class Pasien {
         this.tanggalLahir = tanggalLahir;
         this.bulanLahir = bulanLahir;
         this.tahunLahir = tahunLahir;
-        this.nik = nik;
+        this.noRM = nik;
     }
 
     /**
@@ -63,30 +57,22 @@ public class Pasien {
 
     /**
      * method getNoRekamMedis digunakan untuk mengambil nilai dari variabel
-     * noRekamMedis dengan pengembalian tipe String
+ noRM dengan pengembalian tipe String
      *
      * @return
      */
     public String getNoRekamMedis() {
-        return noRekamMedis;
+        return noRM;
     }
 
     /**
      * method setNoRekamMedis digunakan untuk mengatur/set nilai dari variabel
-     * noRekamMedis yang bertipe String
+ noRM yang bertipe String
      *
      * @param noRekamMedis
-     * @throws Exception
      */
-    public void setNoRekamMedis(String noRekamMedis) throws Exception {
-        // pengecekan panjang karakter variabel noRekamMedis harus 6-20 karakter
-        if (noRekamMedis.length() >= 6 && noRekamMedis.length() <= 20) {
-            // pernyataan bahwa variabel noRekamMedis sama dengan variabel lokal noRekamMedis
-            this.noRekamMedis = noRekamMedis;
-        } else {
-            // pernyataan apabila isi dari variabel noRekamMedis salah
-            throw new Exception("No Rekam Medis Salah");
-        }
+    public void setNoRekamMedis(String noRekamMedis) {
+        this.noRM = noRekamMedis;
     }
 
     /**
@@ -262,25 +248,20 @@ public class Pasien {
         // pengembalian nilai variabel nomorRekamMedis
         return nomorRekamMedis;
     }
-    
-    public String getNik() {
-        return nik;
-    }
 
-    public void setNik(String nik) {
-        this.nik = nik;
-    }
-    
     public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
 
     public static void tambahPasienBaru(Pasien pasien) {
-        Pasien.daftarPasienKlinik.add(pasien);
+        daftarPasienKlinik.add(pasien);
     }
 
-    public static Pasien cariPasien(String string) {
-        // listing cari elemen
-
+    public static Pasien cariPasien(String NoRM) {
+        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+            if (daftarPasienKlinik.get(i).noRM.equals(NoRM)) {
+                return daftarPasienKlinik.get(i);
+            }
+        }
         return null;
-    }
+}
 
 }

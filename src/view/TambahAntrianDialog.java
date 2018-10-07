@@ -29,7 +29,6 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JTextField alamatText;
     private JButton simpanButton;
 
-
     public TambahAntrianDialog(String title) {
         this.setTitle(title);
         init();
@@ -61,28 +60,39 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         alamatLabel = new JLabel("Alamat");
         alamatLabel.setBounds(30, 200, 150, 25);
         this.add(alamatLabel);
-        
+
         alamatText = new JTextField();
         alamatText.setBounds(125, 200, 150, 25);
         this.add(alamatText);
-        
+
         simpanButton = new JButton("Simpan");
         simpanButton.setBounds(125, 300, 100, 30);
         this.add(simpanButton);
-        
+
         simpanButton.addActionListener(this);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == simpanButton) {
-            Pasien baru = new Pasien();
-            
-            Pasien.tambahPasienBaru(baru);
+        if (e.getSource() == noRMText) {
+            Pasien cari = Pasien.cariPasien(noRMText.getText());
+            if (cari == null) {
+                JOptionPane.showMessageDialog(null, "Data Pasien " + noRMText.getText() + " Tidak Ada");
+            } else {
+                namaText.setText(cari.getNama());
+                alamatText.setText(cari.getAlamat());
+            }
+        }
 
-            JOptionPane.showMessageDialog(null, "Data Telah Ditambahkan");
-            this.dispose();
+        if (e.getSource() == simpanButton) {
+            Pasien cari = Pasien.cariPasien(noRMText.getText());
+            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+                if (cari == Pasien.daftarPasienKlinik.get(i)) {
+                    JOptionPane.showMessageDialog(null, "Antrian Berhasil Ditambahkan - Nomor Antrian Anda : " + (i + 1));
+                    this.dispose();
+                }
+            }
         }
     }
 }
